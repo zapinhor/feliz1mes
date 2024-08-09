@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eu te amo <3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-image: url(wallpaper.png);
+            background-repeat: repeat;
+            
+            
+        }
+        #contador {
+            font-size: 2em;
+        }
+        .foto {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .texto {
+            background-color: white; /* Fundo branco */
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="foto">
+        <img src="aaa.png" alt="">
+    </div>
+    <div class="texto">
+    <h1>Estamos juntos há exatamente:</h1>
+    <div id="contador"></div>
+</div>
+
+    <script>
+        function atualizarContagem() {
+            // Defina a data fixa
+            const dataFixa = new Date('2024-07-11T10:30:00'); 
+
+            // Obtenha a data e hora atual
+            const dataAtual = new Date();
+
+            // Calcule a diferença em milissegundos
+            const diferenca = dataAtual - dataFixa;
+
+            // Calcule os componentes de tempo
+            const segundos = Math.floor(diferenca / 1000);
+            const minutos = Math.floor(segundos / 60);
+            const horas = Math.floor(minutos / 60);
+            const dias = Math.floor(horas / 24);
+            const meses = Math.floor(dias / 30.44); // Aproximadamente 30.44 dias por mês
+            const anos = Math.floor(meses / 12);
+
+            // Atualize o HTML com os valores
+            document.getElementById('contador').innerHTML =
+                `${anos} anos, ${meses % 12} meses, ${dias % 30.44} dias, ${horas % 24} horas, ` +
+                `${minutos % 60} minutos, ${segundos % 60} segundos`;
+        }
+
+        // Atualize a contagem a cada segundo
+        setInterval(atualizarContagem, 1000);
+    </script>
+</body>
+</html>
