@@ -54,17 +54,15 @@
             const diferenca = dataAtual - dataFixa;
 
             // Calcule os componentes de tempo
-            const segundos = Math.floor(diferenca / 1000);
-            const minutos = Math.floor(segundos / 60);
-            const horas = Math.floor(minutos / 60);
-            const dias = Math.floor(horas / 24);
-            const meses = Math.floor(dias / 30.44); // Aproximadamente 30.44 dias por mês
-            const anos = Math.floor(meses / 12);
+            const segundos = Math.floor((diferenca / 1000) % 60);
+            const minutos = Math.floor((diferenca / 1000 / 60) % 60);
+            const horas = Math.floor((diferenca / 1000 / 60 / 60) % 24);
+            const dias = Math.floor((diferenca / 1000 / 60 / 60 / 24) % 30.44);
+            const meses = Math.floor((diferenca / 1000 / 60 / 60 / 24 / 30.44) % 12);
+            const anos = Math.floor(diferenca / 1000 / 60 / 60 / 24 / 365.25);
 
-            // Atualize o HTML com os valores
             document.getElementById('contador').innerHTML =
-                `${anos} anos, ${meses % 12} meses, ${dias % 30.44} dias, ${horas % 24} horas, ` +
-                `${minutos % 60} minutos, ${segundos % 60} segundos`;
+                `${anos} anos, ${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
         }
 
         // Atualize a contagem a cada segundo
